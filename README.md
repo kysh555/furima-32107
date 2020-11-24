@@ -18,17 +18,17 @@ has_many: purchases
 
 ## itemsテーブル
 
-| Column           | Type       | Options                        |
-| ---------------- | ---------- | ------------------------------ |
-| item_name        | string     | null: false                    |
-| item_description | text       | null: false                    |
-| item_category    | integer    |                                |
-| item_status      | integer    | null: false                    |
-| shipping_cost    | integer    | null: false                    |
-| ship_from_area   | integer    | null: false                    |
-| days_to_ship     | integer    | null: false                    |
-| item_price       | integer    | null: false                    |
-| user             | references | null: false, foreign_key: true |
+| Column            | Type       | Options                        |
+| ----------------- | ---------- | ------------------------------ |
+| item_name         | string     | null: false                    |
+| item_description  | text       | null: false                    |
+| item_category_id  | integer    | null: false                    |
+| item_status_id    | integer    | null: false                    |
+| shipping_cost_id  | integer    | null: false                    |
+| ship_from_area_id | integer    | null: false                    |
+| days_to_ship_id   | integer    | null: false                    |
+| item_price        | integer    | null: false                    |
+| user              | references | null: false, foreign_key: true |
 
 ### Association
 has_one: purchase
@@ -53,7 +53,7 @@ has_one: ship_to_address
 | Column       | Type       | Options                        |
 | ------------ | ---------- | ------------------------------ |
 | post_code    | string     | null: false                    |
-| prefecture   | integer    |                                |
+| prefecture   | integer    | null: false                    |
 | city         | string     | null: false                    |
 | address      | string     | null: false                    |
 | building     | string     |                                |
