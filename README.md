@@ -25,7 +25,7 @@ has_many: purchases
 | item_category_id  | integer    | null: false                    |
 | item_status_id    | integer    | null: false                    |
 | shipping_cost_id  | integer    | null: false                    |
-| ship_from_area_id | integer    | null: false                    |
+| prefecture_id     | integer    | null: false                    |
 | days_to_ship_id   | integer    | null: false                    |
 | item_price        | integer    | null: false                    |
 | user              | references | null: false, foreign_key: true |
@@ -57,7 +57,7 @@ has_one: ship_to_address
 | city         | string     | null: false                    |
 | address      | string     | null: false                    |
 | building     | string     |                                |
-| phone_number | integer    | null: false                    |
+| phone_number | string     | null: false                    |
 | purchase     | references | null: false, foreign_key: true |
 
 ### Association
