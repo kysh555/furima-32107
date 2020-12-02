@@ -30,35 +30,40 @@ RSpec.describe Item, type: :model do
       it 'item_category_idが1だと出品できない' do
         @item.item_category_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Item category must be other than 1")
+        expect(@item.errors.full_messages).to include("Item category is not selected")
       end
       it 'item_status_idが1だと出品できない' do
         @item.item_status_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Item status must be other than 1")
+        expect(@item.errors.full_messages).to include("Item status is not selected")
       end
       it 'shipping_cost_idが1だと出品できない' do
         @item.shipping_cost_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Shipping cost must be other than 1")
+        expect(@item.errors.full_messages).to include("Shipping cost is not selected")
       end
       it 'prefecture_idが1だと出品できない' do
         @item.prefecture_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Prefecture must be other than 1")
+        expect(@item.errors.full_messages).to include("Prefecture is not selected")
       end
       it 'days_to_ship_idが1だと出品できない' do
         @item.days_to_ship_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Days to ship must be other than 1")
+        expect(@item.errors.full_messages).to include("Days to ship is not selected")
       end
       it 'item_priceが空だと出品できない' do
         @item.item_price = ""
         @item.valid?
         expect(@item.errors.full_messages).to include("Item price can't be blank")
       end
-      it 'item_priceが300~9999999の範囲外だと出品できない' do
+      it 'item_priceが300以下だと出品できない' do
         @item.item_price = 299
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Item price is invalid")
+      end
+      it 'item_priceが9999999以上だと出品できない' do
+        @item.item_price = 10000000
         @item.valid?
         expect(@item.errors.full_messages).to include("Item price is invalid")
       end
