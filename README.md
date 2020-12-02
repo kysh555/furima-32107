@@ -33,6 +33,7 @@ has_many: purchases
 ### Association
 has_one: purchase
 belongs_to: user
+has_one_attached: image
 
 
 ## purchasesテーブル
