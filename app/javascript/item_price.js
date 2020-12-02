@@ -1,7 +1,7 @@
 window.addEventListener('load', () => {
-  const priceInput = document.getElementById("item-price"); /*入力場所*/
-  const addTaxPrice = document.getElementById("add-tax-price"); /*手数料表示*/
-  const profit = document.getElementById("profit"); /*利益表示*/
+  const priceInput = document.getElementById("item-price");
+  const addTaxPrice = document.getElementById("add-tax-price");
+  const profit = document.getElementById("profit");
 
   priceInput.addEventListener('input', () => {
     const inputValue = priceInput.value
