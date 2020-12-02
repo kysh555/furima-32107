@@ -35,22 +35,22 @@ class ItemsController < ApplicationController
     else
       render :edit
     end
-
+    
   end
-
+  
   private
-
+  
   def item_params
     params.require(:item).permit(:item_name, :item_description, :item_category_id, :item_status_id, :shipping_cost_id, :prefecture_id, :days_to_ship_id, :item_price, :image).merge(user_id: current_user.id)
   end
-
+  
   def move_to_index
     @item = Item.find(params[:id])
-    unless current_user == @item.user_id
+    unless current_user.id == @item.user_id
       redirect_to root_path
     end
   end
-
+  
   def move_to_new_session
     unless user_signed_in?
       redirect_to new_user_session_path
