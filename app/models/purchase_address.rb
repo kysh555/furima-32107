@@ -1,6 +1,6 @@
 class PurchaseAddress 
   include ActiveModel::Model
-  attr_accessor :item_id, :user_id, :post_code, :prefecture_id, :city, :address, :building, :phone_number, :token
+  attr_accessor :item_id, :user_id, :post_code, :prefecture_id, :city, :address, :building, :phone_number, :token, :purchase_id
 
   with_options presence: true do
     validates :post_code, format: { with: /\A\d{3}[-]\d{4}\z/, message:'is invalid' }
@@ -11,8 +11,9 @@ class PurchaseAddress
   end
 
   def save
-    Purchase.create(item_id: item_id, user_id: user_id)
-    ShipToAddress.create(post_code: post_code, prefecture_id: prefecture_id, city: city, address: address, building: building, phone_number: phone_number)
+
+    purchase = Purchase.create(item_id: item_id, user_id: user_id)
+    ShipToAddress.create(post_code: post_code, prefecture_id: prefecture_id, city: city, address: address, building: building, phone_number: phone_number, purchase_id: purchase.id)
   end
 
 end
