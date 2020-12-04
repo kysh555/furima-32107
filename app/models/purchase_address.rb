@@ -9,7 +9,6 @@ class PurchaseAddress
     validates :addrss
     validates :phone_number
   end
-  validates :building
 
   def save
     item = Item.find(params[:id])
