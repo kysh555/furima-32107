@@ -3,10 +3,11 @@ require 'rails_helper'
 RSpec.describe PurchaseAddress, type: :model do
   before do
     @purchase_address = FactoryBot.build(:purchase_address)
+    sleep(0.5)
   end
-
+  
   context '配送先の住所情報が保存できる' do
-    it 'post_code、prefecture_id、city、address、phone_numberが存在すれば保存できる' do
+    it 'post_code、prefecture_id、city、address、phone_number、tokenが存在すれば保存できる' do
       expect(@purchase_address).to be_valid
     end
   end
@@ -56,6 +57,11 @@ RSpec.describe PurchaseAddress, type: :model do
       @purchase_address.phone_number = "090123456789"
       @purchase_address.valid?
       expect(@purchase_address.errors.full_messages).to include("Phone number is invalid")
+    end
+    it 'tokenが存在しないと保存できない' do
+      @purchase_address.token = nil
+      @purchase_address.valid?
+      expect(@purchase_address.errors.full_messages).to include("Token can't be blank")
     end
   end
 end
