@@ -18,7 +18,7 @@ class PurchasesController < ApplicationController
         currency: 'jpy'
       )
       @purchase_address.save
-      redirect_to '/'
+      redirect_to root_path
     else
       find_item
       render 'purchases/index'
