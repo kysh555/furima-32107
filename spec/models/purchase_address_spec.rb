@@ -10,6 +10,10 @@ RSpec.describe PurchaseAddress, type: :model do
     it 'post_code、prefecture_id、city、address、phone_number、tokenが存在すれば保存できる' do
       expect(@purchase_address).to be_valid
     end
+    it 'buildingが空でも保存できる' do
+      @purchase_address.building = ""
+      expect(@purchase_address).to be_valid
+    end
   end
 
   context '配送先の住所情報が保存できない' do
