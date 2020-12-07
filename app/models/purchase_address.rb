@@ -9,6 +9,8 @@ class PurchaseAddress
     validates :address
     validates :phone_number, numericality: { only_integer: true }, format: { with: /\A\d{,11}\z/, message: 'is invalid' }
     validates :token
+    validates :item_id
+    validates :user_id
   end
 
   def save
