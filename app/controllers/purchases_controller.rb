@@ -4,13 +4,12 @@ class PurchasesController < ApplicationController
   before_action :find_item, only: [:index, :create]
 
   def index
-    
+
     @purchase_address = PurchaseAddress.new
   end
 
   def create
     @purchase_address = PurchaseAddress.new(purchase_address_params)
-    @item = Item.find(purchase_address_params[:item_id])
     if @purchase_address.valid?
       Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
       Payjp::Charge.create(
