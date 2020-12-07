@@ -38,7 +38,7 @@ class PurchasesController < ApplicationController
   def move_to_index
     find_item
     if current_user == @item.user || @item.purchase.present?
-      redirect_to '/'
+      redirect_to root_path
     end
   end
 
