@@ -1,29 +1,40 @@
 if (document.URL.match( /new/ ) || document.URL.match( /edit/ )){
   document.addEventListener('DOMContentLoaded', () => {
-    const itemImage = document.getElementById('item-image');
-    const imageList = document.getElementById('image-list');
+    const selectImage = document.getElementById('item-images');
     
-    const createImage = (blob) => {
-      const imageElement = document.createElement('div');
-      const blobImage = document.createElement('img');
-      imageElement.appendChild(blobImage);
-      imageList.appendChild(imageElement);
-
-      blobImage.setAttribute('src', blob);
-      blobImage.setAttribute('height', '40%');
-      blobImage.setAttribute('width', '40%');
-    };
-
-    itemImage.addEventListener('change', (e) => {
-      const imageContent = document.querySelector('img');
-      if (imageContent){
-        imageContent.remove();
-      }
+    //画像が選択された時に発火
+    selectImage.addEventListener('change', (e) => {
       
-      const file = e.target.files[0];
-      const blob = window.URL.createObjectURL(file);
+      //プレビューを表示させる場所を取得
+      const placePreview = document.getElementById('preview-area');
+      
+      //選択された画像の情報を取得
+      const files = e.target.files;
+      
+      for (let i = 0; i < files.length; i += 1){
 
-      createImage(blob);
+        //画像1つずつにURLを与える
+        const file = files[i]
+        const blob = window.URL.createObjectURL(file);
+
+        //画像を表示するための要素を生成
+        const previewDiv = document.createElement('div');
+        const previewImg = document.createElement('img');
+
+        //画像URLをimg要素にセット
+        previewImg.setAttribute('src', blob);
+
+        //画像の詳細を指定
+        previewImg.setAttribute('id', `item-image-${i+1}`)
+        previewDiv.setAttribute('class', 'preview-images')
+        previewImg.setAttribute('height', '100%')
+        previewImg.setAttribute('width', '100%')
+
+        //要素を表示させる
+        previewDiv.appendChild(previewImg);
+        placePreview.appendChild(previewDiv);
+
+      }
     });
   });
 }
