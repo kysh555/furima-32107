@@ -7,13 +7,18 @@
       <%= @item.item_name %>
     </h2>
     <div class='item-img-content'>
-      <%= image_tag @item.image ,class:"item-box-img" %>
-      <% if @item.purchase.present? %>
-      <div class='sold-out'>
-        <span>Sold Out!!</span>
-      </div>
+      <% @item.images.each do |image| %>
+        <div class="img-box">
+          <%= link_to image_tag(image, class:"item-image"), image %>
+          <% if @item.purchase.present? %>
+            <div class='sold-out'>
+              <span>Sold Out!!</span>
+            </div>
+          <% end %>
+        </div>
       <% end %>
     </div>
+    <p id="image-click">（画像をクリックすると大きな画像が表示されます）</p>
     <div class="item-price-box">
       <span class="item-price">
         ¥ <%= @item.item_price %>

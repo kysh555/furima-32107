@@ -242,6 +242,7 @@ a {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  align-items: flex-end;
 }
 
 .item-lists>.list {
@@ -253,10 +254,11 @@ a {
 
 .item-img-content {
   position: relative;
+  margin-bottom: 20px;
 }
 
 .item-img {
-  width: 33vh;
+  width: 33vhｚ;
   height: 33vh;
 }
 
@@ -275,6 +277,9 @@ a {
   font: bold;
 }
 
+#image-click {
+  font-size: 10px;
+}
 
 .item-info {
   background-color: #FFF;

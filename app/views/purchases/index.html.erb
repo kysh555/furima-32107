@@ -7,8 +7,14 @@
     </h1>
     <%# 購入内容の表示 %>
     <div class='buy-item-info'>
-      <%= image_tag @item.image, class: 'buy-item-img' %>
-      <div class='buy-item-right-content'>
+      <div class='buy-item-img'>
+        <% @item.images.each do |image| %>
+        <div class="img-box">
+          <%= image_tag image ,class:"item-box-img" %>
+        </div>
+        <% end %>
+      </div>
+      <div class='buy-item-content'>
         <h2 class='buy-item-text'>
           <%= @item.item_name %>
         </h2>
