@@ -28,6 +28,7 @@ class ItemsController < ApplicationController
   end
 
   def update
+    @item.images = Item.find(params[:id]).images
     if @item.update(item_params)
       redirect_to item_path
     else
@@ -43,7 +44,7 @@ class ItemsController < ApplicationController
   private
   
   def item_params
-    params.require(:item).permit(:item_name, :item_description, :item_category_id, :item_status_id, :shipping_cost_id, :prefecture_id, :days_to_ship_id, :item_price, :image).merge(user_id: current_user.id)
+    params.require(:item).permit(:item_name, :item_description, :item_category_id, :item_status_id, :shipping_cost_id, :prefecture_id, :days_to_ship_id, :item_price, images: []).merge(user_id: current_user.id)
   end
   
   def move_to_index
